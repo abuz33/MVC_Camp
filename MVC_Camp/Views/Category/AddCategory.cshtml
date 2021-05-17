@@ -1,0 +1,35 @@
+﻿@model EntityLayer.Concrete.Category
+
+@{
+    Layout = null;
+}
+
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+
+<h1>Add New Category Page</h1>
+<br />
+<p>Welcome aboard</p>
+
+@using(Html.BeginForm("AddCategory", "Category", FormMethod.Post))
+{
+    <div class="form-group">
+        @Html.Label("Category Name:")
+        @Html.TextBoxFor(x=>x.CategoryName)
+        @Html.ValidationMessageFor(x=>x.CategoryName)
+        <br /><br />
+        @Html.Label("Enter the description:")
+        @Html.TextBoxFor(x=>x.CategoryDescription)
+        @Html.ValidationMessageFor(x=>x.CategoryDescription)
+        <br /><br />
+        <button>Save</button>
+    </div>
+}
+
+
+@*<form class="form-group" method="post">
+    <input class="form-control"  type="text" name="categoryName" value="" placeholder="Enter Category Name" />
+    <br />
+    <input class="form-control"  type="text" name="categoryDescription" value="" placeholder="Enter Category Description" />
+    <br />
+    <button class="btn btn-primary">Add</button> 
+</form>*@
