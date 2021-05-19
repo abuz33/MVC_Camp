@@ -21,7 +21,7 @@ namespace BusinessLayer.ValidationRules
             RuleFor(x => x.WriterLastname).MaximumLength(50)
                 .WithMessage("Writer last name cannot be more than 50 characters.");
             RuleFor(x => x.WriterAbout).NotEmpty().WithMessage("About writer cannot be empty.");
-            //RuleFor(x=>x.WriterAbout).C.WithMessage("About writer cannot be empty.");
+            RuleFor(x => x.WriterTitle).NotEmpty().WithMessage("Title cannot be empty.");
 
         }
     }

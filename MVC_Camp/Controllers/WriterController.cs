@@ -14,7 +14,7 @@ namespace MVC_Camp.Controllers
     public class WriterController : Controller
     {
         WriterManager wm = new WriterManager(new EfWriterDal());
-
+        WriterValidator writerValidator = new WriterValidator();
 
 
         public ActionResult Index()
@@ -32,9 +32,7 @@ namespace MVC_Camp.Controllers
         [HttpPost]
         public ActionResult AddWriter(Writer writer)
         {
-            WriterValidator writerValidator = new WriterValidator();
             ValidationResult results = writerValidator.Validate(writer);
-
             if (results.IsValid)
             {
                 wm.AddWriter(writer);
@@ -48,7 +46,32 @@ namespace MVC_Camp.Controllers
                     ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
                 }
             }
+            return View();
+        }
 
+        [HttpGet]
+        public ActionResult EditWriter(int id)
+        {
+            var writervalue = wm.GetById(id);
+            return View(writervalue);
+        }
+
+        [HttpPost]
+        public ActionResult EditWriter(Writer writer)
+        {
+            ValidationResult results = writerValidator.Validate(writer);
+            if (results.IsValid)
+            {
+                wm.UpdateWriter(writer);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                foreach (var error in results.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+            }
             return View();
         }
     }
