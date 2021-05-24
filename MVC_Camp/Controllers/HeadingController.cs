@@ -49,5 +49,11 @@ namespace MVC_Camp.Controllers
             hm.HeadingAdd(heading);
             return RedirectToAction("Index");
         }
+        
+        public ActionResult ContentByHeading()
+        {
+            return View();
+        }
+
     }
 }
