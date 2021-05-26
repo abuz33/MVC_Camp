@@ -28,15 +28,9 @@ namespace BusinessLayer.Concrete
             _headingDal.Insert(heading);
         }
 
-        public Heading GetById(int id)
-        {
-            return _headingDal.Get(p => p.CategoryId == id);
-        }
+        public Heading GetById(int id) => _headingDal.Get(p => p.HeadingId == id);
 
-        public void DeleteHeading(Heading heading)
-        {
-            _headingDal.Delete(heading);
-        }
+        public void DeleteHeading(Heading heading) => _headingDal.Update(heading);
 
         public void UpdateHeading(Heading heading)
         {

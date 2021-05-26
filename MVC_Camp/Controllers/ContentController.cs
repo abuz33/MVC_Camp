@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessLayer.Concrete;
+using DataAccessLayer.EntityFramework;
 
 namespace MVC_Camp.Controllers
 {
     public class ContentController : Controller
     {
+        private ContentManager cm = new ContentManager(new EfContentDal());
+
         // GET: Content
         public ActionResult Index()
         {
@@ -16,7 +20,8 @@ namespace MVC_Camp.Controllers
 
         public ActionResult ContentByHeading(int id)
         {
-            return View();
+            var contentvalues = cm.GetListByHeadingId(id);
+            return View(contentvalues);
         }
     }
 }

@@ -9,7 +9,7 @@ using EntityLayer.Concrete;
 
 namespace DataAccessLayer.EntityFramework
 {
-    public class EfContactDal : GenericRepository<Category>, ICategoryDal
+    public class EfContactDal : GenericRepository<Contact>, IContactDal
     {
     }
 }

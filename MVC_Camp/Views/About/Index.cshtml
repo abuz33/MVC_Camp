@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+<button class="btn btn-primary" data-toggle="modal" data-target="#Modal1">
+    Add New "About Us" Information
+</button>
+
+<div class="modal" id="Modal1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">About Us Information Entry</h2>
+            </div>
+            <form action="#" method="post">
+                <div class="modal-body">
+                    <label>About Us Details 1</label>
+                    <textarea type="text" name="#" class="form-control" ></textarea>
+                    <br />
+                    <label>About Us Details 2</label>
+                    <textarea type="text" name="#" class="form-control" ></textarea>
+                    <br />
+                    <label>About Us Image 1</label>
+                    <input type="text" name="#" class="form-control" />
+                    <br />
+                    <label>About Us Image 2</label>
+                    <input type="text" name="#" class="form-control" />
+                    <br />
+                    <button class="btn btn-info">Save</button>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>

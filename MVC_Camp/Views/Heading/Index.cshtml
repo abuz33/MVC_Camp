@@ -5,6 +5,9 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 @{ string color = "";}
+@{ string status = "";}
+@{ string btnName = "";}
+@{string btnClass= "";}
 
 <!DOCTYPE html>
 <html>
@@ -45,7 +48,8 @@
                             <th style="width: 20%">
                                 Created By
                             </th>
-                            <th style="width: 8%" class="text-center">
+                            <th style="width: 10%">Status</th>
+                            <th style="width: 10%" class="text-center">
                                 Category
                             </th>
                             <th style="width: 30%">
@@ -81,6 +85,20 @@
                             {
                                 color = "badge badge-dark";
                             }
+                            switch (item.HeadingStatus)
+                            {
+                                case true:
+                                    status = "badge badge-success";
+                                    btnName = "Make Passive";
+                                    btnClass = "btn btn-danger btn-sm";
+                                    break;
+                                case false:
+                                    status = "badge badge-danger";
+                                    btnName = "Make Active";
+                                    btnClass = "btn btn-success btn-sm";
+                                    break;
+                            }
+
                             <tr>
                                 <th>
                                     @item.HeadingId
@@ -101,6 +119,7 @@
                                         </li>
                                     </ul>
                                 </td>
+                                <td><span class="@status"> @item.HeadingStatus</span></td>
                                 <td class="project-state">
                                     <span class="@color">@item.Category.CategoryName</span>
                                 </td>
@@ -110,15 +129,15 @@
                                         </i>
                                         Contents
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="#">
+                                    <a class="btn btn-info btn-sm" href="/Heading/EditHeading/@item.HeadingId">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Update
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="#">
+                                    <a class="@btnClass" href="/Heading/DeleteHeading/@item.HeadingId">
                                         <i class="fas fa-trash">
                                         </i>
-                                        Delete
+                                        @btnName
                                     </a>
                                 </td>
                             </tr>
@@ -144,7 +163,7 @@
             <th>Kategori</th>
         </tr>
         @foreach(var item in Model)
-        {
+                        {
             <tr>
                 <td>@item.HeadingID</td>
                 <td>@item.HeadingName</td>
