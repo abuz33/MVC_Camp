@@ -100,6 +100,18 @@
     <Compile Include="Migrations\202105261301326_mig_addStatus_toAllEntity.designer.cs">
       <DependentUpon>202105261301326_mig_addStatus_toAllEntity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202105282022258_mig_delete_aboutStatus.cs" />
+    <Compile Include="Migrations\202105282022258_mig_delete_aboutStatus.designer.cs">
+      <DependentUpon>202105282022258_mig_delete_aboutStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105282101305_mig_delete_contactStatus.cs" />
+    <Compile Include="Migrations\202105282101305_mig_delete_contactStatus.designer.cs">
+      <DependentUpon>202105282101305_mig_delete_contactStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202105282125378_mig_add_contactStatus.cs" />
+    <Compile Include="Migrations\202105282125378_mig_add_contactStatus.designer.cs">
+      <DependentUpon>202105282125378_mig_add_contactStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -138,6 +150,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105261301326_mig_addStatus_toAllEntity.resx">
       <DependentUpon>202105261301326_mig_addStatus_toAllEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105282022258_mig_delete_aboutStatus.resx">
+      <DependentUpon>202105282022258_mig_delete_aboutStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105282101305_mig_delete_contactStatus.resx">
+      <DependentUpon>202105282101305_mig_delete_contactStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202105282125378_mig_add_contactStatus.resx">
+      <DependentUpon>202105282125378_mig_add_contactStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
