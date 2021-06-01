@@ -1,11 +1,13 @@
 ﻿@using EntityLayer.Concrete
-@model List<Contact>
-
+@model List<Message>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    int length;
+    int sentMessages = Model.Count();
 }
-@{ int length;}
+
+
 
 
 <!DOCTYPE html>
@@ -19,7 +21,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Message Box</h1>
+                    <h1>Personal Message Box</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -35,7 +37,7 @@
         <div class="container-fluid">
 
             <div class="row">
-                @Html.Action("ContactLeftPart", "Contact")
+                @Html.Action("ContactLeftPart", "Contact", sentMessages)
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
@@ -68,7 +70,7 @@
                                 <!-- /.btn-group -->
                                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                                 <div class="float-right">
-                                    1-50/200
+                                    1-50/@Model.Count()
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
                                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
@@ -82,9 +84,9 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            if (item.Message.Length < 30)
+                                            if (item.MessageContent.Length < 30)
                                             {
-                                                length = item.Message.Length;
+                                                length = item.MessageContent.Length;
                                             }
                                             else
                                             {
@@ -97,10 +99,10 @@
                                                         <label for="check1"></label>
                                                     </div>
                                                 </td>
-                                                <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
-                                                <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactId">@item.UserName</a></td>
+                                                <td class="mailbox-star"><a href="/Contact/GetContactDetails/@item.Id"><i class="fas fa-star text-warning"></i></a></td>
+                                                <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.Id">@item.SenderMail</a></td>
                                                 <td class="mailbox-subject">
-                                                    <b>@item.Subject</b> - @item.Message.Substring(0, @length)...
+                                                    <b>@item.Subject</b> - @item.MessageContent.Substring(0, @length)...
                                                 </td>
                                                 <td class="mailbox-attachment"></td>
                                                 <td class="mailbox-date">5 mins ago</td>
@@ -127,7 +129,7 @@
                                 <!-- /.btn-group -->
                                 <button type="button" class="btn btn-default btn-sm"><i class="fas fa-sync-alt"></i></button>
                                 <div class="float-right">
-                                    1-50/200
+                                    1-50/@Model.Count()
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-left"></i></button>
                                         <button type="button" class="btn btn-default btn-sm"><i class="fas fa-chevron-right"></i></button>
@@ -145,6 +147,7 @@
             <!-- /.row -->
         </div>
     </section>
+
 
 
 </body>
