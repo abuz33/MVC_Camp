@@ -56,6 +56,8 @@
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
+    <Compile Include="Abstract\IImageDal.cs" />
+    <Compile Include="Abstract\IMessageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
@@ -67,6 +69,8 @@
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
+    <Compile Include="EntityFramework\EfImageDal.cs" />
+    <Compile Include="EntityFramework\EfMessageDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
     <Compile Include="Migrations\202105120028142_mig1.cs" />
     <Compile Include="Migrations\202105120028142_mig1.designer.cs">
@@ -111,6 +115,30 @@
     <Compile Include="Migrations\202105282125378_mig_add_contactStatus.cs" />
     <Compile Include="Migrations\202105282125378_mig_add_contactStatus.designer.cs">
       <DependentUpon>202105282125378_mig_add_contactStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106011248423_mig_add_message_class.cs" />
+    <Compile Include="Migrations\202106011248423_mig_add_message_class.designer.cs">
+      <DependentUpon>202106011248423_mig_add_message_class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106041542169_mig_draft_message_and_status_to_messages.cs" />
+    <Compile Include="Migrations\202106041542169_mig_draft_message_and_status_to_messages.designer.cs">
+      <DependentUpon>202106041542169_mig_draft_message_and_status_to_messages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106042047173_mig_add_image.cs" />
+    <Compile Include="Migrations\202106042047173_mig_add_image.designer.cs">
+      <DependentUpon>202106042047173_mig_add_image.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106042102397_mig_Image_table_name_changed.cs" />
+    <Compile Include="Migrations\202106042102397_mig_Image_table_name_changed.designer.cs">
+      <DependentUpon>202106042102397_mig_Image_table_name_changed.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106042228182_mig_Images_table_add.cs" />
+    <Compile Include="Migrations\202106042228182_mig_Images_table_add.designer.cs">
+      <DependentUpon>202106042228182_mig_Images_table_add.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106042237491_mig_Images_table.cs" />
+    <Compile Include="Migrations\202106042237491_mig_Images_table.designer.cs">
+      <DependentUpon>202106042237491_mig_Images_table.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -159,6 +187,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202105282125378_mig_add_contactStatus.resx">
       <DependentUpon>202105282125378_mig_add_contactStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106011248423_mig_add_message_class.resx">
+      <DependentUpon>202106011248423_mig_add_message_class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106041542169_mig_draft_message_and_status_to_messages.resx">
+      <DependentUpon>202106041542169_mig_draft_message_and_status_to_messages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106042047173_mig_add_image.resx">
+      <DependentUpon>202106042047173_mig_add_image.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106042102397_mig_Image_table_name_changed.resx">
+      <DependentUpon>202106042102397_mig_Image_table_name_changed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106042228182_mig_Images_table_add.resx">
+      <DependentUpon>202106042228182_mig_Images_table_add.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106042237491_mig_Images_table.resx">
+      <DependentUpon>202106042237491_mig_Images_table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
