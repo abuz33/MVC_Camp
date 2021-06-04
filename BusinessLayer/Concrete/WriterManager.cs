@@ -38,6 +38,11 @@ namespace BusinessLayer.Concrete
             _writerDal.Update(writer);
         }
 
+        public int GetWriterId(string mail)
+        {
+            return _writerDal.Get(x => x.WriterMail == mail).WriterId;
+        }
+        
         public Writer GetById(int id)
         {
             return _writerDal.Get(x => x.WriterId == id);

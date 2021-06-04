@@ -1,0 +1,65 @@
+﻿@using EntityLayer.Concrete
+@model List<Skill>
+@{
+    Layout = "~/Views/Shared/_SkillLayout.cshtml";
+    int skillpoint;
+}
+
+<div class="main">
+    <h1>Skills Profile Widget</h1>
+    <div class="main-info w3l">
+        <div class="main-row">
+            <!-- main-row-one -->
+            <div class="profile-grid logo wthree">
+                <img src="@ViewBag.writer.WriterImage" alt="">
+                <h2>@ViewBag.writer.WriterName @ViewBag.writer.WriterLastname </h2>
+                <p>@ViewBag.writer.WriterAbout </p>
+
+            </div>
+            <h3 class="title">Skills</h3>
+            <div class="col-md-6 skills-right bar_group">
+                @if (Model.Count > 0)
+                {
+                    foreach (var skill in Model)
+                    {
+                        skillpoint = 250 * @skill.SkillPoint;
+                        <div class="bar_group__bar thin" label="@skill.SkillName; @skill.SkillPoint%" value="@skillpoint"></div>
+                    }
+                }
+                else
+                {
+                    <div class="bar_group__bar thin" label="Quis nostrud &nbsp;&nbsp; 100%" value="250"></div>
+                    <div class="bar_group__bar thin" label="Sed do eiusmod &nbsp;&nbsp; 72%" value="180"></div>
+                    <div class="bar_group__bar thin" label="Ut enim adnim &nbsp;&nbsp; 88%" value="220"></div>
+                }
+            </div>
+            <!--bar-js-->
+            <script src="/AdminLTE-3.0.4/web/js/bars.js"></script>
+            <div class="social-icons agileits">
+                <ul>
+                    <li><a href="#"></a></li>
+                    <li><a href="#" class="fb"></a></li>
+                    <li><a href="#" class="be"></a></li>
+                    <li><a href="#" class="gg"></a></li>
+                </ul>
+            </div>
+            <div style="display: flex; justify-content: space-between">
+                <div>
+                    <a href="#" class="btn btn-success">Return to Application</a>
+                </div>
+                <div>
+                    <a href="/Skill/AddSocialMedia" class="btn btn-success">Add Social Media Accounts</a>
+                </div>
+                <div>
+                    <a href="/Skill/AddSkill" class="btn btn-primary">Add a Skill</a>
+                </div>
+            </div>
+            <div class="clear"> </div>
+        </div>
+    </div>
+    <!-- copyright -->
+    <div class="copyright">
+        <p> © 2016 Skills Profile Widget . All rights reserved | Design by <a href="http://w3layouts.com/" target="_blank">W3layouts.</a></p>
+    </div>
+    <!-- //copyright -->
+</div>

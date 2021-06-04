@@ -3,6 +3,7 @@ using DataAccessLayer.Abstract;
 using EntityLayer.Concrete;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace BusinessLayer.Concrete
 {
@@ -15,14 +16,24 @@ namespace BusinessLayer.Concrete
             _messageDal = messageDal;
         }
 
-        public List<Message> GetListInbox()
+        public List<Message> GetListInbox(string email)
         {
-            return _messageDal.List(x => x.ReceiverMail == "admin@gmail.com");
+            return _messageDal.List(x => x.ReceiverMail == email);
         }
 
-        public List<Message> GetListSentBox()
+        public List<Message> GetListSentBox(string email)
         {
-            return _messageDal.List(x => x.SenderMail == "admin@gmail.com");
+            return _messageDal.List(x => x.SenderMail == email);
+        }
+
+        public List<Message> GetUnreadListInbox(string email)
+        {
+            return _messageDal.List(x => x.ReceiverMail == email && x.IsRead == false);
+        }
+
+        public List<Message> GetUnreadListSentBox(string email)
+        {
+            return _messageDal.List(x => x.SenderMail == email && x.IsRead == false);
         }
 
         public Message GetById(int id)

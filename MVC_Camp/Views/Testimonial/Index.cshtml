@@ -1,0 +1,58 @@
+﻿@using EntityLayer.Concrete
+@model List<Testimonial>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string status = "";
+    string btnName = "";
+    string btnClass = "";
+}
+
+<div style="margin: 0 10px">
+    <br />
+    <h2>Testimonials</h2>
+    <br />
+    <br />
+
+    <table id="example" class="table table-striped table-bordered dt-responsive nowrap" style="width:100%">
+        <thead>
+            <tr>
+                <th>Testimonial Id</th>
+                <th>Testimonial Content</th>
+                <th>Writer Name</th>
+                <th>Testimonial Created Date</th>
+                <th>Status</th>
+                <th>Operations</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var x in Model)
+            {
+                switch (x.Approved)
+                {
+                    case true:
+                        status = "badge badge-success";
+                        btnName = "Disapprove";
+                        btnClass = "btn btn-danger btn-sm";
+                        break;
+                    case false:
+                        status = "badge badge-danger";
+                        btnName = "Approve";
+                        btnClass = "btn btn-success btn-sm";
+                        break;
+                }
+
+                <tr>
+                    <td>@x.TestimonialId</td>
+                    <td>@x.TestimonialContent</td>
+                    <td>@x.Name</td>
+                    <td>@x.Date.ToShortDateString()</td>
+                    <td><span class="@status">@x.Approved</span></td>
+                    <td><a href="/Testimonial/UpdateTestimonial/@x.TestimonialId" class="@btnClass">@btnName</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <a href="/Testimonial/AddTestimonial" class="btn btn-info">New Testimonial</a>
+</div>

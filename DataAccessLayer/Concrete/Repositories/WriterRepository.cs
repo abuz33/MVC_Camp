@@ -13,7 +13,7 @@ namespace DataAccessLayer.Concrete.Repositories
     public class WriterRepository:IWriterDal
     {
         Context c = new Context();
-        DbSet<Writer> _object;
+        //DbSet<Writer> _object;
 
         public List<Writer> List()
         {

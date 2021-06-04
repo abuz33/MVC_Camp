@@ -23,6 +23,16 @@ namespace BusinessLayer.Concrete
             return _headingDal.List();
         }
 
+        public int GetHeadingCountInCategory(string CatName)
+        {
+            return _headingDal.List(x =>  x.Category.CategoryName== CatName).Count;
+        }
+
+        public List<Heading> GetListByWriter(int id)
+        {
+            return _headingDal.List(x => x.WriterId == id && x.HeadingStatus == true);
+        }
+
         public void HeadingAdd(Heading heading)
         {
             _headingDal.Insert(heading);

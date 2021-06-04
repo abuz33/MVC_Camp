@@ -1,0 +1,142 @@
+﻿@using EntityLayer.Concrete
+@model List<Heading>
+@{
+    ViewBag.Title = "MyHeadings";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+@{ string color = "";}
+@{ string status = "";}
+@{ string btnName = "";}
+@{string btnClass = "";}
+
+<section class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Projects</h1>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Heading Operations</h3>
+            <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                    <i class="fas fa-minus"></i>
+                </button>
+            </div>
+        </div>
+        <div class="card-body p-0">
+            <table class="table table-striped projects">
+                <thead>
+                    <tr>
+                        <th style="width: 1%">
+                            #
+                        </th>
+                        <th style="width: 20%">
+                            Heading Name
+                        </th>
+                        <th style="width: 20%">
+                            Created By
+                        </th>
+                        <th style="width: 10%" class="text-center">
+                            Category
+                        </th>
+                        <th style="width: 30%">
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        if (item.Category.CategoryName == "Theater")
+                        {
+                            color = "badge badge-warning";
+                        }
+
+                        if (item.Category.CategoryName == "Education")
+                        {
+                            color = "badge badge-success";
+                        }
+                        if (item.Category.CategoryName == "Development")
+                        {
+                            color = "badge badge-info";
+                        }
+                        if (item.Category.CategoryName == "Series")
+                        {
+                            color = "badge badge-secondary";
+                        }
+                        if (item.Category.CategoryName == "Movies")
+                        {
+                            color = "badge badge-danger";
+                        }
+
+                        if (item.Category.CategoryName == "Sport")
+                        {
+                            color = "badge badge-dark";
+                        }
+                        switch (item.HeadingStatus)
+                        {
+                            case true:
+                                status = "badge badge-success";
+                                btnName = "Make Passive";
+                                btnClass = "btn btn-danger btn-sm";
+                                break;
+                            case false:
+                                status = "badge badge-danger";
+                                btnName = "Make Active";
+                                btnClass = "btn btn-success btn-sm";
+                                break;
+                        }
+
+                        <tr>
+                            <th>
+                                @item.HeadingId
+                            </th>
+                            <td>
+                                <a>
+                                    @item.HeadingName
+                                </a>
+                                <br />
+                                <small>
+                                    Created @item.HeadingCreateDateTime.ToString("D")
+                                </small>
+                            </td>
+                            <td>
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar" src="@item.Writer.WriterImage">
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="project-state">
+                                <span class="@color">@item.Category.CategoryName</span>
+                            </td>
+                            <td class="project-actions text-right">
+                                <a class="btn btn-primary btn-sm" href="/WriterPanel/ContentByHeading/@item.HeadingId">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    Contents
+                                </a>
+                                <a class="btn btn-info btn-sm" href="/WriterPanel/EditHeading/@item.HeadingId">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Update
+                                </a>
+                                <a class="@btnClass" href="/WriterPanel/DeleteHeading/@item.HeadingId">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    @btnName
+                                </a>
+                            </td>
+                        </tr>
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <a href="/WriterPanel/NewHeading" class="btn btn-primary">Add a new Heading</a>
+</section>

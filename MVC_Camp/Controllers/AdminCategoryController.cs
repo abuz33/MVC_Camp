@@ -14,12 +14,15 @@ namespace MVC_Camp.Controllers
     public class AdminCategoryController : Controller
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
-
+        
+        [Authorize(Roles = "b")]
         public ActionResult Index()
         {
             var categoryValues = cm.GetList();
             return View(categoryValues);
         }
+
+
 
         [HttpGet]
         public ActionResult AddCategory()

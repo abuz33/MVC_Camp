@@ -4,7 +4,7 @@
     ViewBag.Title = "Sent Message Box";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     int length;
-    int sentMessages = Model.Count();
+    string receiver;
 }
 
 
@@ -37,7 +37,7 @@
         <div class="container-fluid">
 
             <div class="row">
-                @Html.Action("ContactLeftPart", "Contact", sentMessages)
+                @Html.Action("ContactLeftPart", "Contact")
                 <!-- /.col -->
                 <div class="col-md-9">
                     <div class="card card-primary card-outline">
@@ -92,6 +92,9 @@
                                             {
                                                 length = 30;
                                             }
+
+                                            receiver = item.IsRead ? item.ReceiverMail : "(Not Read) " + item.ReceiverMail;
+
                                             <tr>
                                                 <td>
                                                     <div class="icheck-primary">
@@ -100,7 +103,7 @@
                                                     </div>
                                                 </td>
                                                 <td class="mailbox-star"><a href="/Message/GetMessageDetails/@item.Id"><i class="fas fa-star text-warning"></i></a></td>
-                                                <td class="mailbox-name"><a href="/Message/GetMessageDetails/@item.Id">Receiver : @item.ReceiverMail</a></td>
+                                                <td class="mailbox-name"><a href="/Message/GetMessageDetails/@item.Id">Receiver : @receiver</a></td>
                                                 <td class="mailbox-subject">
                                                     <b>@item.Subject</b> - @item.MessageContent.Substring(0, @length)...
 

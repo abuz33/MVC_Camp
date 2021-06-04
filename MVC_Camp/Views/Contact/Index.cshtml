@@ -4,8 +4,9 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    string subject;
+    int length;
 }
-@{ int length;}
 
 
 <!DOCTYPE html>
@@ -82,14 +83,9 @@
                                     <tbody>
                                         @foreach (var item in Model)
                                         {
-                                            if (item.Message.Length < 30)
-                                            {
-                                                length = item.Message.Length;
-                                            }
-                                            else
-                                            {
-                                                length = 30;
-                                            }
+                                            length = item.Message.Length < 30 ? item.Message.Length : 30;
+                                            subject = item.IsRead ? item.Subject : "Not Read " + item.Subject;
+
                                             <tr>
                                                 <td>
                                                     <div class="icheck-primary">
@@ -100,7 +96,7 @@
                                                 <td class="mailbox-star"><a href="#"><i class="fas fa-star text-warning"></i></a></td>
                                                 <td class="mailbox-name"><a href="/Contact/GetContactDetails/@item.ContactId">@item.UserName</a></td>
                                                 <td class="mailbox-subject">
-                                                    <b>@item.Subject</b> - @item.Message.Substring(0, @length)...
+                                                    <b>@subject</b> - @item.Message.Substring(0, @length)...
                                                 </td>
                                                 <td class="mailbox-attachment"></td>
                                                 <td class="mailbox-date">@item.MessageSentDate.ToString("dd/MM/yyyy")</td>

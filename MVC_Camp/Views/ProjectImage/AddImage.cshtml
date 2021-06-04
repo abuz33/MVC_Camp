@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.ProjectImage
+
+@{
+    ViewBag.Title = "AddImage";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Add Image</h2>
+
+@using (Html.BeginForm("AddImage", "ProjectImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        @Html.Label("Image Name:")
+        @Html.TextBoxFor(x => x.ImageName, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.ImageName)*@
+        <br /><br />
+        @Html.Label("Enter the description:")
+        @Html.TextAreaFor(x => x.ImageDescription, new { @class = "form-control" })
+        @*@Html.ValidationMessageFor(x => x.CategoryDescription)*@
+        <br /><br />
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.ImagePath, new { Type = "file"})
+        </div>
+        <br /><br />
+        <button class="btn btn-success">Save</button>
+    </div>
+}
+
+

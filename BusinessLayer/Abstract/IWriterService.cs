@@ -13,7 +13,7 @@ namespace BusinessLayer.Abstract
         void AddWriter(Writer writer);
         void DeleteWriter(Writer writer);
         void UpdateWriter(Writer writer);
-
+        int GetWriterId(string mail);
         Writer GetById(int id);
     }
 }

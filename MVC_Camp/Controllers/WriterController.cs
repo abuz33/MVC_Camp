@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
+using BusinessLayer.ValidationRules.HelperFunc;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -35,6 +36,7 @@ namespace MVC_Camp.Controllers
             ValidationResult results = writerValidator.Validate(writer);
             if (results.IsValid)
             {
+                writer.WriterPassword = PasswordHashing.Hashing(writer.WriterPassword);
                 wm.AddWriter(writer);
                 return RedirectToAction("Index");
 

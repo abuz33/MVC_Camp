@@ -55,10 +55,14 @@
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
     <Compile Include="Abstract\IContentDal.cs" />
+    <Compile Include="Abstract\IDraftMessageDal.cs" />
     <Compile Include="Abstract\IHeadingDal.cs" />
     <Compile Include="Abstract\IImageDal.cs" />
     <Compile Include="Abstract\IMessageDal.cs" />
+    <Compile Include="Abstract\Interface1.cs" />
+    <Compile Include="Abstract\IProjectImageDal.cs" />
     <Compile Include="Abstract\IRepository.cs" />
+    <Compile Include="Abstract\ISkillDal.cs" />
     <Compile Include="Abstract\IWriterDal.cs" />
     <Compile Include="Concrete\Context.cs" />
     <Compile Include="Concrete\Repositories\CategoryRepository.cs" />
@@ -68,10 +72,14 @@
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
+    <Compile Include="EntityFramework\EfDraftMessageDal.cs" />
     <Compile Include="EntityFramework\EfHeadingDal.cs" />
     <Compile Include="EntityFramework\EfImageDal.cs" />
     <Compile Include="EntityFramework\EfMessageDal.cs" />
+    <Compile Include="EntityFramework\EfSkillDal.cs" />
+    <Compile Include="EntityFramework\EfTestimonialDal.cs" />
     <Compile Include="EntityFramework\EfWriterDal.cs" />
+    <Compile Include="EntityFramework\EfProectImages.cs" />
     <Compile Include="Migrations\202105120028142_mig1.cs" />
     <Compile Include="Migrations\202105120028142_mig1.designer.cs">
       <DependentUpon>202105120028142_mig1.cs</DependentUpon>
@@ -140,6 +148,26 @@
     <Compile Include="Migrations\202106042237491_mig_Images_table.designer.cs">
       <DependentUpon>202106042237491_mig_Images_table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202106081931098_mig_admin_table.cs" />
+    <Compile Include="Migrations\202106081931098_mig_admin_table.designer.cs">
+      <DependentUpon>202106081931098_mig_admin_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106112014200_mig_is_read_column_added.cs" />
+    <Compile Include="Migrations\202106112014200_mig_is_read_column_added.designer.cs">
+      <DependentUpon>202106112014200_mig_is_read_column_added.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202106231148216_mig_added_skills_table.cs" />
+    <Compile Include="Migrations\202106231148216_mig_added_skills_table.designer.cs">
+      <DependentUpon>202106231148216_mig_added_skills_table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107022147202_mig_add_new_tables.cs" />
+    <Compile Include="Migrations\202107022147202_mig_add_new_tables.designer.cs">
+      <DependentUpon>202107022147202_mig_add_new_tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202107022203070_mig_update_testimonials.cs" />
+    <Compile Include="Migrations\202107022203070_mig_update_testimonials.designer.cs">
+      <DependentUpon>202107022203070_mig_update_testimonials.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -205,6 +233,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202106042237491_mig_Images_table.resx">
       <DependentUpon>202106042237491_mig_Images_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106081931098_mig_admin_table.resx">
+      <DependentUpon>202106081931098_mig_admin_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106112014200_mig_is_read_column_added.resx">
+      <DependentUpon>202106112014200_mig_is_read_column_added.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202106231148216_mig_added_skills_table.resx">
+      <DependentUpon>202106231148216_mig_added_skills_table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107022147202_mig_add_new_tables.resx">
+      <DependentUpon>202107022147202_mig_add_new_tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107022203070_mig_update_testimonials.resx">
+      <DependentUpon>202107022203070_mig_update_testimonials.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

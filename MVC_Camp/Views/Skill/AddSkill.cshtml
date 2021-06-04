@@ -1,0 +1,29 @@
+﻿@model EntityLayer.Concrete.Skill
+@{
+    ViewBag.Title = "AddSkill";
+    Layout = "~/Views/Shared/_SkillLayout.cshtml";
+}
+
+<div class="main">
+    <h1>Add Skill Page</h1>
+    <div class="main-info">
+        <div class="main-row">
+            @using (Html.BeginForm("AddSkill", "Skill", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.Label("Skill Name", new { @class = "text-white" })
+                    @Html.TextBoxFor(x => x.SkillName, new { @class = "form-control" })
+                    <br />
+                    @Html.ValidationMessageFor(x => x.SkillName, null, new { @class = "text-light" })
+                    <br />
+                    @Html.Label("Skill Point", new { @class = "text-white" })
+                    @Html.TextBoxFor(x => x.SkillPoint, new { @class = "form-control" })
+                    <br />
+                    @Html.ValidationMessageFor(x => x.SkillPoint, null, new { @class = "text-light" })
+                    <br />
+                    <button class="btn btn-info">Add Writer</button>
+                </div>
+            }
+        </div>
+    </div>
+</div>

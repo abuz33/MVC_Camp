@@ -24,6 +24,11 @@ namespace BusinessLayer.Concrete
             return _contactDal.List();
         }
 
+        public List<Contact> GetUnread()
+        {
+            return _contactDal.List(x=>x.IsRead == false);
+        }
+
         public Contact GetById(int id)
         {
             return _contactDal.Get(x => x.ContactId == id);

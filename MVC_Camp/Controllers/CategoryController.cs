@@ -15,11 +15,12 @@ namespace MVC_Camp.Controllers
     {
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
 
-        // GET: Category
+        [Authorize]
         public ActionResult Index()
         {
             return View();
         }
+
 
         public ActionResult GetCategoryList()
         {
@@ -52,6 +53,11 @@ namespace MVC_Camp.Controllers
                 }
             }
 
+            return View();
+        }
+
+        public ActionResult Test()
+        {
             return View();
         }
     }
