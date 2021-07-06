@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IAdminDal.cs" />
     <Compile Include="Abstract\ICategoryDal.cs" />
     <Compile Include="Abstract\IAboutDal.cs" />
     <Compile Include="Abstract\IContactDal.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Concrete\Repositories\GenericRepository.cs" />
     <Compile Include="Concrete\Repositories\WriterRepository.cs" />
     <Compile Include="EntityFramework\EfAboutDal.cs" />
+    <Compile Include="EntityFramework\EfAdminDal.cs" />
     <Compile Include="EntityFramework\EfCategoryDal.cs" />
     <Compile Include="EntityFramework\EfContactDal.cs" />
     <Compile Include="EntityFramework\EfContentDal.cs" />
@@ -168,6 +170,10 @@
     <Compile Include="Migrations\202107022203070_mig_update_testimonials.designer.cs">
       <DependentUpon>202107022203070_mig_update_testimonials.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202107062130428_mig_writer_address.cs" />
+    <Compile Include="Migrations\202107062130428_mig_writer_address.designer.cs">
+      <DependentUpon>202107062130428_mig_writer_address.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -248,6 +254,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202107022203070_mig_update_testimonials.resx">
       <DependentUpon>202107022203070_mig_update_testimonials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202107062130428_mig_writer_address.resx">
+      <DependentUpon>202107062130428_mig_writer_address.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,0 +1,20 @@
+﻿@model EntityLayer.Concrete.Testimonial
+
+@{
+    ViewBag.Title = "Testimonial";
+    Layout = "~/Views/Shared/_WriterLayout.cshtml";
+}
+<br />
+<h2>Testimonials</h2>
+
+@using (Html.BeginForm("Testimonial", "WriterPanel", FormMethod.Post))
+{
+<div class="form-group">
+    @Html.Label("Testimonial Content")
+    @Html.TextAreaFor(x => x.TestimonialContent, new { @class = "form-control" })
+    <br />
+    @Html.ValidationMessageFor(x => x.TestimonialContent, null)
+    <br /><br />
+    <button class="btn btn-info">Add Testimonial</button>
+</div>
+}

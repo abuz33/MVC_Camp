@@ -1,16 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using BusinessLayer.Concrete;
+﻿using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
-using DataAccessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
 using PagedList;
-using PagedList.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Mvc;
 
 
 namespace MVC_Camp.Controllers
@@ -21,10 +18,16 @@ namespace MVC_Camp.Controllers
         CategoryManager cm = new CategoryManager(new EfCategoryDal());
         WriterValidator writerValidator = new WriterValidator();
         private WriterManager wm = new WriterManager(new EfWriterDal());
+        private TestimonialManager tm = new TestimonialManager(new EfTestimonialDal());
+        TestimonialValidator testimonialValidator = new TestimonialValidator();
+
 
         public ActionResult MyProfile()
         {
-            return View();
+            string p = (string)Session["WriterMail"];
+            var id = wm.GetWriterId(p);
+            var writerValue = wm.GetById(id);
+            return View(writerValue);
         }
 
         [HttpGet]
@@ -32,7 +35,6 @@ namespace MVC_Camp.Controllers
         {
             string p = (string)Session["WriterMail"];
             var id = wm.GetWriterId(p);
-            ViewBag.d = p;
             var writerValue = wm.GetById(id);
             return View(writerValue);
         }
@@ -136,6 +138,36 @@ namespace MVC_Camp.Controllers
         {
             var headings = hm.GetList().ToPagedList(page, 4);
             return View(headings);
+        }
+
+        public ActionResult Testimonial()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Testimonial(Testimonial p)
+        {
+            ValidationResult results = testimonialValidator.Validate(p);
+            if (results.IsValid)
+            {
+                var mail = (string)Session["WriterMail"];
+                var writer = wm.GetByMail(mail);
+
+                p.Name = writer.WriterName + " " + writer.WriterLastname;
+                p.Date = DateTime.Now;
+                tm.TestimonialAddBl(p);
+                return RedirectToAction("MyProfile");
+            }
+            else
+            {
+                foreach (var error in results.Errors)
+                {
+                    ModelState.AddModelError(error.PropertyName, error.ErrorMessage);
+                }
+            }
+
+            return View();
         }
     }
 }

@@ -22,4 +22,5 @@ namespace EntityLayer.Concrete
         public string AdminRole { get; set; }
 
     }
+
 }

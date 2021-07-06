@@ -14,10 +14,10 @@ namespace EntityLayer.Concrete
 
         [StringLength(50)]
         public string WriterName { get; set; }
-        
+
         [StringLength(50)]
         public string WriterLastname { get; set; }
-        
+
         [StringLength(250)]
         public string WriterImage { get; set; }
 
@@ -26,12 +26,16 @@ namespace EntityLayer.Concrete
 
         [StringLength(200)]
         public string WriterMail { get; set; }
-        
+
         [StringLength(200)]
         public string WriterPassword { get; set; }
-        
-        [StringLength(20)] 
+
+        [StringLength(20)]
         public string WriterTitle { get; set; }
+        [StringLength(100)]
+        public string WriterAddress { get; set; }
+        [StringLength(20)]
+        public string WriterCountry { get; set; }
 
         public bool WriterStatus { get; set; }
 

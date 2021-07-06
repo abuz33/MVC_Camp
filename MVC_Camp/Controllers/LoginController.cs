@@ -6,7 +6,7 @@ using System.Net;
 using System.Web.Mvc;
 using System.Web.Security;
 using BusinessLayer.Concrete;
-using BusinessLayer.ValidationRules.HelperFunc;
+using BusinessLayer.ValidationRules.HelperClass;
 using DataAccessLayer.EntityFramework;
 using Newtonsoft.Json;
 
@@ -64,7 +64,7 @@ namespace MVC_Camp.Controllers
                 return View();
             }
 
-            var pass = PasswordHashing.Hashing(p.WriterPassword);
+            var pass = PasswordHashing.Encrypt(p.WriterPassword);
             var userInfo = _wm.GetWriter(p.WriterMail, pass);
 
             if (userInfo != null)

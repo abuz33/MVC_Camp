@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
+using CloudinaryDotNet;
+using CloudinaryDotNet.Actions;
+
 
 namespace MVC_Camp.Controllers
 {

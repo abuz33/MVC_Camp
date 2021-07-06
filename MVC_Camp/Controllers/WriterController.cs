@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using BusinessLayer.Concrete;
 using BusinessLayer.ValidationRules;
-using BusinessLayer.ValidationRules.HelperFunc;
+using BusinessLayer.ValidationRules.HelperClass;
 using DataAccessLayer.EntityFramework;
 using EntityLayer.Concrete;
 using FluentValidation.Results;
@@ -36,7 +36,7 @@ namespace MVC_Camp.Controllers
             ValidationResult results = writerValidator.Validate(writer);
             if (results.IsValid)
             {
-                writer.WriterPassword = PasswordHashing.Hashing(writer.WriterPassword);
+                writer.WriterPassword = PasswordHashing.Encrypt(writer.WriterPassword);
                 wm.AddWriter(writer);
                 return RedirectToAction("Index");
 
@@ -55,6 +55,7 @@ namespace MVC_Camp.Controllers
         public ActionResult EditWriter(int id)
         {
             var writervalue = wm.GetById(id);
+            writervalue.WriterPassword = PasswordHashing.Decrypt(writervalue.WriterPassword);
             return View(writervalue);
         }
 
@@ -64,6 +65,8 @@ namespace MVC_Camp.Controllers
             ValidationResult results = writerValidator.Validate(writer);
             if (results.IsValid)
             {
+                writer.WriterPassword = PasswordHashing.Encrypt(writer.WriterPassword);
+
                 wm.UpdateWriter(writer);
                 return RedirectToAction("Index");
             }
